@@ -12,7 +12,7 @@ namespace NETCore.Repository.StaticMethod
         public static void SendEmail(string email, string subject, string htmlMessage)
         {
             string fromMail = "sayaadalahlala@gmail.com";
-            string fromPassword = "SAYA3512f4";
+            string fromPassword = "sayalalak";
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
