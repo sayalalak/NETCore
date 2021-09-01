@@ -36,5 +36,6 @@ namespace NETCore.Context
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Profiling> Profilings { get; set; }
         public DbSet<University> Universities { get; set; }
+        public DbSet<ResetPassword> ResetPasswords { get; set; }
     }
 }
