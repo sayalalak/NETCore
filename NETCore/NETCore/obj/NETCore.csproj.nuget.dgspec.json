@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\NETCore.csproj": {}
+    "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\NETCore.csproj": {
+    "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\NETCore.csproj",
+        "projectUniqueName": "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj",
         "projectName": "NETCore",
-        "projectPath": "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\NETCore.csproj",
+        "projectPath": "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj",
         "packagesPath": "C:\\Users\\lnath\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\obj\\",
+        "outputPath": "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.0.0, )"

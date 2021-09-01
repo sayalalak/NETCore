@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "k8lWPKN62nH/7aGiT8dE6TXpHmEugaaB9rfZ+bsRgQHYhVu6Q6jv5LT/LzVMN1q9UWWQH+1WbjHBYvwstBn7xw==",
+  "dgSpecHash": "kyDhPAZiwgggUCnkPR2or1MqY3BmEoxkrM5jZKZiks+IjnNTYfnzameA2Jr0asDXuSFnnuSMuLyI94xEiRJi3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lnath\\source\\repos\\NETCore\\NETCore\\NETCore.csproj",
+  "projectFilePath": "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lnath\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",

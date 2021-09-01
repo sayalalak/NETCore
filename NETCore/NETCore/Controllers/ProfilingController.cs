@@ -12,9 +12,9 @@ namespace NETCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfillingController : BaseController<Profiling, ProfillingRepository, string>
+    public class ProfilingController : BaseController<Profiling, ProfilingRepository, string>
     {
-        public ProfillingController(ProfillingRepository repository) : base(repository)
+        public ProfilingController(ProfilingRepository repository) : base(repository)
         {
 
         }

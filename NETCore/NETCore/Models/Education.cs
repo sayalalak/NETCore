@@ -10,6 +10,13 @@ namespace NETCore.Models
     [Table("tb_tr_educations")]
     public class Education
     {
+        public Education(string degree, string gPA, int universityId)
+        {
+            Degree = degree;
+            GPA = gPA;
+            UniversityId = universityId;
+        }
+
         public int Id { get; set; }
         public string Degree { get; set; }
         public string GPA { get; set; }

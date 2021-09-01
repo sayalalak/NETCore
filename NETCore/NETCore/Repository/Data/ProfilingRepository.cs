@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace NETCore.Repository.Data
 {
-    public class ProfillingRepository : GeneralRepository<MyContext, Profiling, string>
+    public class ProfilingRepository : GeneralRepository<MyContext, Profiling, string>
     {
-        public ProfillingRepository(MyContext myContext) : base(myContext)
+        public ProfilingRepository(MyContext myContext) : base(myContext)
         {
 
         }
