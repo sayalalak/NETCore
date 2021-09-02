@@ -98,7 +98,7 @@ namespace NETCore.Repository.Data
             myContext.Accounts.Add(new Account()
             {
                 NIK = register.NIK,
-                Password = BCrypt.Net.BCrypt.HashPassword(register.Password)
+                Password = BCrypt.Net.BCrypt.HashPassword(register.Password, BCrypt.Net.BCrypt.GenerateSalt(12))
             });
             myContext.SaveChanges();
 

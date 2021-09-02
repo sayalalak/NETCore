@@ -22,6 +22,30 @@ namespace NETCore.Controllers
         {
             this.repository = repository;
         }
+        [HttpGet("GetLogin")]
+        public ActionResult GetLogin()
+        {
+            var getLogin = repository.GetLoginVMs();
+            if (getLogin == null)
+            {
+                return NotFound(new
+                {
+                    status = HttpStatusCode.NotFound,
+                    result = getLogin,
+                    message = "Data Kosong"
+                });
+            }
+            else
+            {
+                return Ok(new
+                {
+                    status = HttpStatusCode.OK,
+                    result = getLogin,
+                    message = "Success"
+                });
+            }
+
+        }
         [HttpPost("Login")]
         public ActionResult Login(LoginVM login)
         {
@@ -152,13 +176,15 @@ namespace NETCore.Controllers
                 //Generate Reset password with random alphanumstring
                 //string resetPassword = repository.GetRandomAlphanumericString(8);
                 //Generate Reset password with GUID
-                string resetPassword = System.Guid.NewGuid().ToString();
+                string resetPassword = Guid.NewGuid().ToString();
+                string GetDate = DateTime.Now.ToString();
+                string SubjectMail = $"Reset Password - {GetDate}";
 
                 //Reset password
                 if (repository.ResetPassword(account.NIK, resetPassword))
                 {
                     //send password to email
-                    EmailSender.SendEmail(loginVM.Email, "Reset Password", "Hello "
+                    EmailSender.SendEmail(loginVM.Email, SubjectMail, "Hello "
                                   + loginVM.Email + "<br><br>berikut reset password anda, jangan lupa ganti dengan password baru<br><br><b>"
                                   + resetPassword + "<b><br><br>Thanks<br>netcore-api.com");
 

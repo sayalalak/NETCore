@@ -26,7 +26,8 @@ namespace NETCore.Repository.Data
                                p.NIK equals a.NIK
                                select new LoginVM
                                {
-                                   Email = p.NIK,
+                                   NIK = p.NIK,
+                                   Email = p.Email,
                                    Password = a.Password
                                }).ToList();
             if (getLoginVMs.Count == 0)
@@ -108,7 +109,7 @@ namespace NETCore.Repository.Data
             dbSet.Update(new Account()
             {
                 NIK = nik,
-                Password = BCrypt.Net.BCrypt.HashPassword(newPassword)
+                Password = BCrypt.Net.BCrypt.HashPassword(newPassword, BCrypt.Net.BCrypt.GenerateSalt(12))
             });
             myContext.SaveChanges();
 
@@ -124,7 +125,7 @@ namespace NETCore.Repository.Data
             dbSet.Update(new Account()
             {
                 NIK = nik,
-                Password = BCrypt.Net.BCrypt.HashPassword(newPassword)
+                Password = BCrypt.Net.BCrypt.HashPassword(newPassword, BCrypt.Net.BCrypt.GenerateSalt(12))
             });
             myContext.SaveChanges();
 
