@@ -149,7 +149,10 @@ namespace NETCore.Controllers
                 }
 
                 //Generate Reset password
-                string resetPassword = repository.GetRandomAlphanumericString(8);
+                //Generate Reset password with random alphanumstring
+                //string resetPassword = repository.GetRandomAlphanumericString(8);
+                //Generate Reset password with GUID
+                string resetPassword = System.Guid.NewGuid().ToString();
 
                 //Reset password
                 if (repository.ResetPassword(account.NIK, resetPassword))
