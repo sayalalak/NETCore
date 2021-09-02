@@ -121,9 +121,11 @@ namespace NETCore.Controllers
 
                 //save into database
                 repository.SaveResetPassword(account.Email, otp, account.NIK);
+                string GetDate = DateTime.Now.ToString();
+                string SubjectMail = $"Reset Password - {GetDate}";
 
                 //send otp to email
-                EmailSender.SendEmail(loginVM.Email, "Reset Password OTP", "Hello "
+                EmailSender.SendEmail(loginVM.Email, SubjectMail , "Hello "
                               + loginVM.Email + "<br><br>berikut Kode OTP anda<br><br><b>"
                               + otp + "<b><br><br>Thanks<br>netcore-api.com");
 
