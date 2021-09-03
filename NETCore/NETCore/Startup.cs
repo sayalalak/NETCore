@@ -46,11 +46,10 @@ namespace NETCore
                 UseSqlServer(Configuration.GetConnectionString("NETCoreContext")));
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "Place Info Service API",
-                    Version = "v2",
-                    Description = "Sample service for Learner",
+                    Title = "NETCore API",
+                    Version = "v1",
                 });
             });
         }
@@ -77,8 +76,8 @@ namespace NETCore
 
             app.UseSwaggerUI(options => 
                 options.SwaggerEndpoint(
-                    "/swagger/v2/swagger.json",
-                    "PlaceInfo Services"));
+                    "/swagger/v1/swagger.json",
+                    "NetCore"));
         }
     }
 }
