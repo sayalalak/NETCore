@@ -137,3 +137,14 @@ C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\obj\Debug\netcoreapp3.1\
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\obj\Debug\netcoreapp3.1\NETCore.pdb
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\obj\Debug\netcoreapp3.1\NETCore.genruntimeconfig.cache
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\BCrypt.Net-Core.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\NETCore\obj\Debug\netcoreapp3.1\NETCore.MvcApplicationPartsAssemblyInfo.cs

@@ -15,10 +15,10 @@ namespace NETCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : BaseController<Account, AccountRepository, string>
+    public class AccountsController : BaseController<Account, AccountRepository, string>
     {
         private readonly AccountRepository repository;
-        public AccountController(AccountRepository repository) : base(repository)
+        public AccountsController(AccountRepository repository) : base(repository)
         {
             this.repository = repository;
         }

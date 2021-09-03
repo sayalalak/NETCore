@@ -10,7 +10,7 @@ namespace NETCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegisterController : ControllerBase
+    public class RegistersController : ControllerBase
     {
         private readonly AccountRepository accountRepository;
         private readonly EducationRepository educationRepository;
@@ -18,7 +18,7 @@ namespace NETCore.Controllers
         private readonly ProfilingRepository profilingRepository;
         private readonly UniversityRepository universityRepository;
 
-        public RegisterController(AccountRepository accountRepository, 
+        public RegistersController(AccountRepository accountRepository, 
                                   EducationRepository educationRepository, 
                                   PersonRepository personRepository, 
                                   ProfilingRepository profilingRepository, 

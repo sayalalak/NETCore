@@ -34,19 +34,25 @@ namespace NETCore
             // services.AddControllers();
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = 
-                    ReferenceLoopHandling.Ignore
-            );
+                    ReferenceLoopHandling.Ignore);
 
             services.AddScoped<PersonRepository>();
             services.AddScoped<AccountRepository>();
             services.AddScoped<ProfilingRepository>();
             services.AddScoped<EducationRepository>();
             services.AddScoped<UniversityRepository>();
-            // services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NETCoreContext")));
-
             services.AddDbContext<MyContext>(options =>
-                options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("NETCoreContext"))
-            );
+                options.UseLazyLoadingProxies().
+                UseSqlServer(Configuration.GetConnectionString("NETCoreContext")));
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Place Info Service API",
+                    Version = "v2",
+                    Description = "Sample service for Learner",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +73,12 @@ namespace NETCore
             {
                 endpoints.MapControllers();
             });
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options => 
+                options.SwaggerEndpoint(
+                    "/swagger/v2/swagger.json",
+                    "PlaceInfo Services"));
         }
     }
 }

@@ -14,10 +14,10 @@ namespace NETCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonController : BaseController<Person, PersonRepository, string>
+    public class PersonsController : BaseController<Person, PersonRepository, string>
     {
         private readonly PersonRepository repository;
-        public PersonController(PersonRepository repository) : base(repository)
+        public PersonsController(PersonRepository repository) : base(repository)
         {
             this.repository = repository;
         }
