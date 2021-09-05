@@ -41,6 +41,7 @@ namespace NETCore
             services.AddScoped<ProfilingRepository>();
             services.AddScoped<EducationRepository>();
             services.AddScoped<UniversityRepository>();
+            services.AddScoped<RoleRepository>();
             services.AddDbContext<MyContext>(options =>
                 options.UseLazyLoadingProxies().
                 UseSqlServer(Configuration.GetConnectionString("NETCoreContext")));

@@ -14,9 +14,12 @@ namespace NETCore.Models
         [Key]
         public string NIK { get; set; }
         public string Password { get; set; }
+        public int RoleId { get; set; }
         [JsonIgnore]
         public virtual Person Person { get; set; }
         [JsonIgnore]
         public virtual Profiling Profiling { get; set; }
+        [JsonIgnore]
+        public virtual Role Role { get; set; }
     }
 }

@@ -29,6 +29,9 @@ namespace NETCore.Context
             modelBuilder.Entity<University>()
                 .HasMany(u => u.Educations)
                 .WithOne(e => e.University);
+            modelBuilder.Entity<Role>()
+                .HasMany(a => a.Accounts)
+                .WithOne(r => r.Role);
 
         }
         public DbSet<Person> Persons { get; set; }
@@ -37,5 +40,6 @@ namespace NETCore.Context
         public DbSet<Profiling> Profilings { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<ResetPassword> ResetPasswords { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }
