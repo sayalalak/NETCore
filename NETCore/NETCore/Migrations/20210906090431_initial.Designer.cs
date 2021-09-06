@@ -10,8 +10,8 @@ using NETCore.Context;
 namespace NETCore.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210901071627_addtable_resetpass")]
-    partial class addtable_resetpass
+    [Migration("20210906090431_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,9 +29,27 @@ namespace NETCore.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("NIK");
 
                     b.ToTable("tb_m_accounts");
+                });
+
+            modelBuilder.Entity("NETCore.Models.AccountRole", b =>
+                {
+                    b.Property<string>("NIK")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NIK", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("tb_tr_accountroles");
                 });
 
             modelBuilder.Entity("NETCore.Models.Education", b =>
@@ -127,6 +145,21 @@ namespace NETCore.Migrations
                     b.ToTable("tb_m_reset_passwords");
                 });
 
+            modelBuilder.Entity("NETCore.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_m_roles");
+                });
+
             modelBuilder.Entity("NETCore.Models.University", b =>
                 {
                     b.Property<int>("Id")
@@ -135,6 +168,7 @@ namespace NETCore.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -151,6 +185,25 @@ namespace NETCore.Migrations
                         .IsRequired();
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("NETCore.Models.AccountRole", b =>
+                {
+                    b.HasOne("NETCore.Models.Account", "Account")
+                        .WithMany("AccountRoles")
+                        .HasForeignKey("NIK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NETCore.Models.Role", "Role")
+                        .WithMany("AccountRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("NETCore.Models.Education", b =>
@@ -185,6 +238,8 @@ namespace NETCore.Migrations
 
             modelBuilder.Entity("NETCore.Models.Account", b =>
                 {
+                    b.Navigation("AccountRoles");
+
                     b.Navigation("Profiling");
                 });
 
@@ -196,6 +251,11 @@ namespace NETCore.Migrations
             modelBuilder.Entity("NETCore.Models.Person", b =>
                 {
                     b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("NETCore.Models.Role", b =>
+                {
+                    b.Navigation("AccountRoles");
                 });
 
             modelBuilder.Entity("NETCore.Models.University", b =>

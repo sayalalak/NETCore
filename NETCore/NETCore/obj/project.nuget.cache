@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "gG7in7qjpIc5vZCg7yba9a4ss55V0/Bu1q4sNLUxc4ieYyahr6/R3hJrvLgjvXL/3HwPRnRB/TNMIN+xMtUk3w==",
+  "dgSpecHash": "8sTECitw9YvDxoF78R3lZTjjsHsEqui7k2x4/AJ2Q9oSWWjfk2uau54GKamr44Ik6/4cz+/7jwEVENDDlWKgYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\lnath\\Documents\\GitHub\\NETCore\\NETCore\\NETCore\\NETCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lnath\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\lnath\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
     "C:\\Users\\lnath\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

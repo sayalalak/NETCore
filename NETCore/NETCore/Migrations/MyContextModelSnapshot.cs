@@ -32,9 +32,22 @@ namespace NETCore.Migrations
 
                     b.HasKey("NIK");
 
+                    b.ToTable("tb_m_accounts");
+                });
+
+            modelBuilder.Entity("NETCore.Models.AccountRole", b =>
+                {
+                    b.Property<string>("NIK")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NIK", "RoleId");
+
                     b.HasIndex("RoleId");
 
-                    b.ToTable("tb_m_accounts");
+                    b.ToTable("tb_tr_accountroles");
                 });
 
             modelBuilder.Entity("NETCore.Models.Education", b =>
@@ -169,13 +182,24 @@ namespace NETCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("NETCore.Models.AccountRole", b =>
+                {
+                    b.HasOne("NETCore.Models.Account", "Account")
+                        .WithMany("AccountRoles")
+                        .HasForeignKey("NIK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NETCore.Models.Role", "Role")
-                        .WithMany("Accounts")
+                        .WithMany("AccountRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Person");
+                    b.Navigation("Account");
 
                     b.Navigation("Role");
                 });
@@ -212,6 +236,8 @@ namespace NETCore.Migrations
 
             modelBuilder.Entity("NETCore.Models.Account", b =>
                 {
+                    b.Navigation("AccountRoles");
+
                     b.Navigation("Profiling");
                 });
 
@@ -227,7 +253,7 @@ namespace NETCore.Migrations
 
             modelBuilder.Entity("NETCore.Models.Role", b =>
                 {
-                    b.Navigation("Accounts");
+                    b.Navigation("AccountRoles");
                 });
 
             modelBuilder.Entity("NETCore.Models.University", b =>

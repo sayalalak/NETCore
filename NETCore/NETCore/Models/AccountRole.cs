@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace NETCore.Models
 {
-    [Table("tb_m_accounts")]
-    public class Account
+    [Table("tb_tr_accountroles")]
+    public class AccountRole
     {
-        [Key]
         public string NIK { get; set; }
-        public string Password { get; set; }
         public int RoleId { get; set; }
         [JsonIgnore]
-        public virtual Person Person { get; set; }
+        public virtual Account Account { get; set; }
         [JsonIgnore]
-        public virtual Profiling Profiling { get; set; }
-        [JsonIgnore]
-        public virtual ICollection<AccountRole> AccountRoles { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

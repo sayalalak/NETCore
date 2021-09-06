@@ -10,18 +10,32 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using NETCore.Repository.StaticMethod;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
+using NETCore.Context;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NETCore.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AccountsController : BaseController<Account, AccountRepository, string>
     {
         private readonly AccountRepository repository;
-        public AccountsController(AccountRepository repository) : base(repository)
+        public IConfiguration _configuration;
+        private readonly MyContext myContext;
+
+        public AccountsController(AccountRepository repository, IConfiguration configuration, MyContext myContext) : base(repository)
         {
             this.repository = repository;
+            _configuration = configuration;
+            this.myContext = myContext;
         }
+        [Authorize]
         [HttpGet("GetLogin")]
         public ActionResult GetLogin()
         {
@@ -71,12 +85,52 @@ namespace NETCore.Controllers
                         message = "Password Salah"
                     });
                 }
-
-                return StatusCode((int)HttpStatusCode.OK, new
+                else
                 {
-                    status = (int)HttpStatusCode.OK,
-                    message = "Success Login",
-                });
+                    var data = (from p in myContext.Persons
+                                join a in myContext.Accounts on
+                                p.NIK equals a.NIK
+                                join ar in myContext.AccountRoles on
+                                a.NIK equals ar.NIK
+                                join r in myContext.Roles on
+                                ar.RoleId equals r.Id
+                                where p.Email == $"{ login.Email}"
+                                select new PayloadVM
+                                {
+                                    NIK = p.NIK,
+                                    Email = p.Email,
+                                    RoleName = r.Name
+                                }).ToList();
+                    var asd = data;
+                    var claim = new List<Claim>();
+
+                    claim.Add(new Claim("NIK", data[0].NIK));
+                    claim.Add(new Claim("Email", data[0].Email));
+                    foreach (var d in data)
+                    {
+                        claim.Add(new Claim("Role", d.RoleName));
+                    }
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+
+                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                    var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
+                                                     _configuration["Jwt:Audience"],
+                                                     claim, expires: DateTime.UtcNow.AddDays(1),
+                                                     signingCredentials: signIn);
+
+                    return Ok(new
+                    {
+                        token = new JwtSecurityTokenHandler().WriteToken(token),
+                        status = HttpStatusCode.OK,
+                        message = "Login Success !"
+                    });
+                }
+                //return StatusCode((int)HttpStatusCode.OK, new
+                //{
+                //    status = (int)HttpStatusCode.OK,
+                //    message = "Success Login",
+                //});
 
             }
             catch (System.Exception e)

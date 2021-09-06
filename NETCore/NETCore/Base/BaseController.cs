@@ -41,10 +41,14 @@ namespace NETCore.Base
                     return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Data Sudah ada" });
                 }
         }
-            catch (Exception)
+            catch (Exception e)
             {
 
-               return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Data Sudah ada" });
+                return StatusCode((int)HttpStatusCode.InternalServerError, new
+                {
+                    status = (int)HttpStatusCode.InternalServerError,
+                    message = e.Message
+                });
             }
 
         }
@@ -84,7 +88,11 @@ namespace NETCore.Base
             catch (Exception e)
             {
 
-                Console.WriteLine("ERROR :" + e.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new
+                {
+                    status = (int)HttpStatusCode.InternalServerError,
+                    message = e.Message
+                });
             }
             return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Data tidak ditemukan" });
         }

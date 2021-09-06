@@ -106,6 +106,11 @@ namespace NETCore.Repository.Data
             myContext.Educations.Add(education);
             myContext.SaveChanges();
 
+            AccountRole accountRole = new AccountRole();
+            accountRole.NIK = register.NIK;
+            accountRole.RoleId = 1;
+            myContext.AccountRoles.Add(accountRole);
+
             myContext.Profilings.Add(new Profiling()
             {
                 NIK = register.NIK,

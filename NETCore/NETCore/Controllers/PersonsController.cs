@@ -9,9 +9,11 @@ using NETCore.Repository.Data;
 using NETCore.Models;
 using System.Net;
 using NETCore.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NETCore.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : BaseController<Person, PersonRepository, string>
