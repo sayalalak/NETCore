@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NETCore.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -36,5 +37,7 @@ namespace NETCore.ViewModel
         public string GPA { get; set; }
         [Required]
         public int UniversityId { get; set; }
+        public ICollection<AccountRole> AccountRoles { get; internal set; }
+        //public int RoleId { get; set; }
     }
 }

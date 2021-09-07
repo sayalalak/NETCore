@@ -10,6 +10,7 @@ using NETCore.Models;
 using System.Net;
 using NETCore.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace NETCore.Controllers
 {
@@ -23,6 +24,7 @@ namespace NETCore.Controllers
         {
             this.repository = repository;
         }
+        //[EnableCors("AllowOrigin")]
         [HttpGet("GetRegister")]
         public ActionResult GetRegister()
         {
@@ -70,6 +72,7 @@ namespace NETCore.Controllers
                 });
             }
         }
+        [AllowAnonymous]
         [HttpPost("Register")]
         public ActionResult InsertReg(RegisterVM register)
         {

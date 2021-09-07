@@ -35,7 +35,7 @@ namespace NETCore.Controllers
             _configuration = configuration;
             this.myContext = myContext;
         }
-        [Authorize]
+        [Authorize(Roles = "HR")]
         [HttpGet("GetLogin")]
         public ActionResult GetLogin()
         {
@@ -101,14 +101,14 @@ namespace NETCore.Controllers
                                     Email = p.Email,
                                     RoleName = r.Name
                                 }).ToList();
-                    var asd = data;
+                    //var asd = data;
                     var claim = new List<Claim>();
 
                     claim.Add(new Claim("NIK", data[0].NIK));
                     claim.Add(new Claim("Email", data[0].Email));
                     foreach (var d in data)
                     {
-                        claim.Add(new Claim("Role", d.RoleName));
+                        claim.Add(new Claim("roles", d.RoleName));
                     }
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 

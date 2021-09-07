@@ -41,7 +41,8 @@ namespace NETCore.Repository.Data
                                    Password = a.Password,
                                    Degree = e.Degree,
                                    GPA = e.GPA,
-                                   UniversityId = u.Id
+                                   UniversityId = u.Id,
+                                   AccountRoles = a.AccountRoles
                                }).ToList();
             if (RegisterVMs.Count==0)
             {
@@ -59,6 +60,8 @@ namespace NETCore.Repository.Data
             {
                 return (from p in myContext.Persons
                         join a in myContext.Accounts on p.NIK equals a.NIK
+                        //join ar in myContext.AccountRoles on a.NIK equals ar.NIK
+                        //join r in myContext.Roles on ar.RoleId equals r.Id
                         join pf in myContext.Profilings on a.NIK equals pf.NIK
                         join e in myContext.Educations on pf.EducationId equals e.Id
                         join u in myContext.Universities on e.UniversityId equals u.Id
@@ -76,8 +79,9 @@ namespace NETCore.Repository.Data
                             Password = a.Password,
                             Degree = e.Degree,
                             GPA = e.GPA,
-                            UniversityId = u.Id
-                        }).Where(p => p.NIK == NIK).First();
+                            UniversityId = u.Id,
+                            AccountRoles = a.AccountRoles
+            }).Where(p => p.NIK == NIK).First();
             }
         }
         public int InsertReg(RegisterVM register)
@@ -108,7 +112,11 @@ namespace NETCore.Repository.Data
 
             AccountRole accountRole = new AccountRole();
             accountRole.NIK = register.NIK;
-            accountRole.RoleId = 1;
+            //if (register.RoleId==0)
+            //{
+                accountRole.RoleId = 1;
+            //}
+            //accountRole.RoleId = register.RoleId;
             myContext.AccountRoles.Add(accountRole);
 
             myContext.Profilings.Add(new Profiling()

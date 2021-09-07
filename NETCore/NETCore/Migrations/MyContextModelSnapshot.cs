@@ -27,9 +27,6 @@ namespace NETCore.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("NIK");
 
                     b.ToTable("tb_m_accounts");
