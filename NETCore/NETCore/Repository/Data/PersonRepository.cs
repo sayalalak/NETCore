@@ -124,7 +124,7 @@ namespace NETCore.Repository.Data
                 NIK = register.NIK,
                 EducationId = education.Id
             });
-
+            
             return myContext.SaveChanges();
         }
         public string Validation(string nik, string email, string phone)

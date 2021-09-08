@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace NETCore.Controllers
 {
-    [Authorize]
+    //uthorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : BaseController<Person, PersonRepository, string>
@@ -24,7 +24,7 @@ namespace NETCore.Controllers
         {
             this.repository = repository;
         }
-        //[EnableCors("AllowOrigin")]
+        [EnableCors("AllowOrigin")]
         [HttpGet("GetRegister")]
         public ActionResult GetRegister()
         {
@@ -72,7 +72,7 @@ namespace NETCore.Controllers
                 });
             }
         }
-        [AllowAnonymous]
+        //llowAnonymous]
         [HttpPost("Register")]
         public ActionResult InsertReg(RegisterVM register)
         {

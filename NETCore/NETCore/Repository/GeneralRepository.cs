@@ -45,6 +45,7 @@ namespace NETCore.Repository
         public int Insert(Entity entity)
         {
             dbSet.Add(entity);
+            //akan mengembalikan data berapa banyak dilakukan fungsinya yang berupa jumlah
             var insert = myContext.SaveChanges();
             return insert;
         }
