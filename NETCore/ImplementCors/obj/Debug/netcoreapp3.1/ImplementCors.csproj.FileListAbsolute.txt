@@ -97,9 +97,11 @@ C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcorea
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.RazorCoreGenerate.cache
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\LatihanCSS\Index.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\TestCORS\Index.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.RazorTargetAssemblyInfo.cache
@@ -109,4 +111,4 @@ C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcorea
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.dll
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.pdb
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.genruntimeconfig.cache
-C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\TestCORS\Index.cshtml.g.cs
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs

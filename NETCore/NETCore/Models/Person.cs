@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,8 +26,10 @@ namespace NETCore.Models
             Male,
             Female
         }
+        [JsonConverter(typeof(StringEnumConverter))]
         public Gender GenderName { get; set; }
         [JsonIgnore]
         public virtual Account Account { get; set; }
+
     }
 }

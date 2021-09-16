@@ -1,0 +1,176 @@
+﻿<button type="button" id="add" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Insert</button>
+<table id="myTable" class="table table-striped table-bordered nowrap">
+    <thead class="align-content-center">
+        <tr>
+            <td>No</td>
+            <td>NIK</td>
+            <td>Nama</td>
+            <td>Email</td>
+            <td>NoTelp</td>
+            <td>Gender</td>
+            <td>Universitas</td>
+            <td>Gelar</td>
+            <td>IPK</td>
+            <td>Gaji</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="test2">DETAIL DATA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row ">
+                    <div class="col-4 ">
+                        <ul>
+                            <li class="list-group">Tanggal Lahir</li>
+                            <li class="list-group">Email</li>
+                            <li class="list-group">Gender</li>
+                            <li class="list-group">Gelar</li>
+                            <li class="list-group">IPK</li>
+                            <li class="list-group">Salary</li>
+                            <li class="list-group">University</li>
+                        </ul>
+                    </div>
+                    <div class="col-8" id="data">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light">FORM INSERT DATA</h5>
+                </div>
+                <div class="modal-body" id="detail">
+                    <form class="needs-validation" id="formRegister" novalidate>
+                        <div class="form-row">
+                            <div class="col-md mb-3">
+                                <label for="nik">NIK</label>
+                                <input type="text" class="form-control" id="nik" placeholder="nik"  autocomplete="off"  required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid nik.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstname">First name</label>
+                                <input type="text" class="form-control" id="firstname" placeholder="First name" autocomplete="off" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastname">Last name</label>
+                                <input type="text" class="form-control" id="lastname" placeholder="Last name"  autocomplete="off"  required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-8 mb-3">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="ex : saya@gmail.com" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+                            </div>
+                            <div class="col-md mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid password.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-7 mb-3">
+                                <label for="phone">Phone Number</label>
+                                <input type="number" class="form-control" id="phone" placeholder="ex : 08123456789" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid phone number.
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="dateBirth">BirthDate</label>
+                                <input type="date" class="form-control" id="dateBirth" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid birthdate.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="form-control">
+                                    <option selected="">-Choose-</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md mb-3">
+                                <label for="salary">Salary</label>
+                                <input type="number" class="form-control" id="salary" placeholder="ex : 1000000" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid salary.
+                                </div>
+                                <div class="form-row">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="degree">Degree</label>
+                                <input type="text" class="form-control" id="degree" placeholder="ex : Sarjana" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid degree.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="gpa">GPA</label>
+                                <input type="text" class="form-control" id="gpa" placeholder="ex : 4.0" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid gpa.
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="university">University</label>
+                                <input type="number" class="form-control" id="university" placeholder="university" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid university.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                        </div>
+                        <div class="form-row">
+                            
+                        </div>
+                        <button class="btn btn-primary" id="btnSubmit" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-default" data-dismiss="modal" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@section Scripts{
+    <script src="~/js/RegisterJS.js"></script>
+}

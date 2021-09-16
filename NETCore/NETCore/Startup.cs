@@ -41,10 +41,10 @@ namespace NETCore
 
             services.AddScoped<PersonRepository>();
             services.AddScoped<AccountRepository>();
+            services.AddScoped<RoleRepository>();
             services.AddScoped<ProfilingRepository>();
             services.AddScoped<EducationRepository>();
             services.AddScoped<UniversityRepository>();
-            services.AddScoped<RoleRepository>();
             //database config
             services.AddDbContext<MyContext>(options =>
                 options.UseLazyLoadingProxies().
@@ -70,10 +70,20 @@ namespace NETCore
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
-            services.AddCors(c =>
+            services.AddCors(options =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                    });
             });
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            //});
 
         }
 

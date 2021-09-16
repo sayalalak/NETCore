@@ -24,7 +24,7 @@ namespace NETCore.Controllers
         {
             this.repository = repository;
         }
-        [EnableCors("AllowOrigin")]
+        [EnableCors("AllowAllOrigins")]
         [HttpGet("GetRegister")]
         public ActionResult GetRegister()
         {
@@ -49,6 +49,7 @@ namespace NETCore.Controllers
             }
                 
         }
+        [EnableCors("AllowAllOrigins")]
         [HttpGet("GetRegister/{NIK}")]
         public ActionResult GetRegister(string NIK)
         {
@@ -72,7 +73,7 @@ namespace NETCore.Controllers
                 });
             }
         }
-        //llowAnonymous]
+        [EnableCors("AllowAllOrigins")]
         [HttpPost("Register")]
         public ActionResult InsertReg(RegisterVM register)
         {

@@ -1,9 +1,12 @@
 ﻿using NETCore.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static NETCore.Models.Person;
 
 namespace NETCore.ViewModel
 {
@@ -23,7 +26,8 @@ namespace NETCore.ViewModel
         [Required]
         public DateTime BirthDate { get; set; }
         [Required]
-        public int Gender { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Gender Gender { get; set; }
         [Required]
         public int Salary { get; set; }
         [EmailAddress]
@@ -35,9 +39,9 @@ namespace NETCore.ViewModel
         public string Degree { get; set; }
         [Required]
         public string GPA { get; set; }
-        [Required]
-        public int UniversityId { get; set; }
+        public string UniversityName { get; internal set; }
         public ICollection<AccountRole> AccountRoles { get; internal set; }
+        public int UniversityId { get; set; }
         //public int RoleId { get; set; }
     }
 }

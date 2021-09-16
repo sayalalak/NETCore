@@ -35,13 +35,13 @@ namespace NETCore.Repository.Data
                                    //LastName = p.LastName,
                                    PhoneNumber = p.Phone,
                                    BirthDate = p.BirthDate,
-                                   Gender = (int)p.GenderName,
+                                   Gender = p.GenderName,
                                    Salary = p.Salary,
                                    Email = p.Email,
                                    Password = a.Password,
                                    Degree = e.Degree,
                                    GPA = e.GPA,
-                                   UniversityId = u.Id,
+                                   UniversityName = u.Name,
                                    AccountRoles = a.AccountRoles
                                }).ToList();
             if (RegisterVMs.Count==0)
@@ -73,13 +73,13 @@ namespace NETCore.Repository.Data
                             //LastName = p.LastName,
                             PhoneNumber = p.Phone,
                             BirthDate = p.BirthDate,
-                            Gender = (int)p.GenderName,
+                            Gender = p.GenderName,
                             Salary = p.Salary,
                             Email = p.Email,
                             Password = a.Password,
                             Degree = e.Degree,
                             GPA = e.GPA,
-                            UniversityId = u.Id,
+                            UniversityName = u.Name,
                             AccountRoles = a.AccountRoles
             }).Where(p => p.NIK == NIK).First();
             }
@@ -106,25 +106,23 @@ namespace NETCore.Repository.Data
             });
             myContext.SaveChanges();
 
+            myContext.AccountRoles.Add(new AccountRole()
+            {
+                NIK = register.NIK,
+                RoleId = 1
+            });
+            myContext.SaveChanges();
+
             Education education = new Education(register.Degree, register.GPA, register.UniversityId);
             myContext.Educations.Add(education);
             myContext.SaveChanges();
-
-            AccountRole accountRole = new AccountRole();
-            accountRole.NIK = register.NIK;
-            //if (register.RoleId==0)
-            //{
-                accountRole.RoleId = 1;
-            //}
-            //accountRole.RoleId = register.RoleId;
-            myContext.AccountRoles.Add(accountRole);
 
             myContext.Profilings.Add(new Profiling()
             {
                 NIK = register.NIK,
                 EducationId = education.Id
             });
-            
+
             return myContext.SaveChanges();
         }
         public string Validation(string nik, string email, string phone)
