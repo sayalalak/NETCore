@@ -68,10 +68,6 @@ $(document).ready(function () {
                 },
                 "autoWidth": true
             },
-            { "data": "gender", "autoWidth": true },
-            { "data": "universityName", "autoWidth": true},
-            { "data": "degree", "autoWidth": true },
-            { "data": "gpa", "autoWidth": true },
             {
                 "data": null,
                 "render": function (data, type, row) {

@@ -112,3 +112,4 @@ C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcorea
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.pdb
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\ImplementCors.genruntimeconfig.cache
 C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
+C:\Users\lnath\Documents\GitHub\NETCore\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
