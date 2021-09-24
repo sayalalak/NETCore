@@ -1,8 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_AdminLayout";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">University Chart</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-donut" id="myUnivChart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Degree Chart</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar" id="myDegreeChart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Donut Chart -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Gender Chart</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4" id="myGenderChart">
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
+@section Scripts{
+    <script src="~/js/ChartJS.js"></script>
+}

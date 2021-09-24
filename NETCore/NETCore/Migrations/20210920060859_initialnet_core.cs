@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NETCore.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialnet_core : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,8 +72,7 @@ namespace NETCore.Migrations
                 columns: table => new
                 {
                     NIK = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

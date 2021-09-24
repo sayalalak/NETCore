@@ -29,7 +29,7 @@ namespace NETCore.Repository
                 throw new ArgumentNullException();
             }
             dbSet.Remove(wantDelete);
-            return myContext.SaveChanges();
+            return myContext.SaveChanges(); 
         }
 
         public IEnumerable<Entity> Get()

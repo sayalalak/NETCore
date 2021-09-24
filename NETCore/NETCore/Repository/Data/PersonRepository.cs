@@ -41,6 +41,7 @@ namespace NETCore.Repository.Data
                                    Password = a.Password,
                                    Degree = e.Degree,
                                    GPA = e.GPA,
+                                   UniversityId = u.Id,
                                    UniversityName = u.Name,
                                    AccountRoles = a.AccountRoles
                                }).ToList();
@@ -60,8 +61,8 @@ namespace NETCore.Repository.Data
             {
                 return (from p in myContext.Persons
                         join a in myContext.Accounts on p.NIK equals a.NIK
-                        //join ar in myContext.AccountRoles on a.NIK equals ar.NIK
-                        //join r in myContext.Roles on ar.RoleId equals r.Id
+                        join ar in myContext.AccountRoles on a.NIK equals ar.NIK
+                        join r in myContext.Roles on ar.RoleId equals r.Id
                         join pf in myContext.Profilings on a.NIK equals pf.NIK
                         join e in myContext.Educations on pf.EducationId equals e.Id
                         join u in myContext.Universities on e.UniversityId equals u.Id
@@ -79,6 +80,7 @@ namespace NETCore.Repository.Data
                             Password = a.Password,
                             Degree = e.Degree,
                             GPA = e.GPA,
+                            UniversityId = u.Id,
                             UniversityName = u.Name,
                             AccountRoles = a.AccountRoles
             }).Where(p => p.NIK == NIK).First();
@@ -109,7 +111,7 @@ namespace NETCore.Repository.Data
             myContext.AccountRoles.Add(new AccountRole()
             {
                 NIK = register.NIK,
-                RoleId = 1
+                RoleId = 1              
             });
             myContext.SaveChanges();
 
@@ -142,9 +144,7 @@ namespace NETCore.Repository.Data
             {
                 return "Nomor hp sudah ada";
             }
-
             return "1";
-
         }
         
     }

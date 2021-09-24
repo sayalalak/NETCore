@@ -8,7 +8,20 @@
             form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
                     event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === true) {
+                    event.preventDefault();
                     insert();
                 }
                 form.classList.add('was-validated');
@@ -18,21 +31,40 @@
 })();
 $(document).ready(function () {
     $('#myTable').DataTable({
+        "filter": true,
+        "ajax": {
+            "url": "/Persons/GetAllData",
+            "datatype": "json",
+            "dataSrc": ""
+        },
         "dom": 'Bfrtip',
         "buttons": [
             {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5]
+                },
+                className: 'btn btn-sm btn-outline-secondary',
+                bom: true
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5]
+
+                },
+                className: 'btn btn-sm btn-outline-secondary',
+                bom: true
+            },
+            {
                 extend: 'print',
-                type : 'button',
-                text: 'Cetak Tabel',
-                class: 'btn btn-primary',
-            }
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5]
+                },
+                className: 'btn btn-sm btn-outline-secondary',
+                bom: true
+            },
         ],
-        "filter": true,
-        "ajax": {
-            "url": "https://localhost:44348/API/Persons/GetRegister",
-            "datatype": "json",
-            "dataSrc": "result"
-        },
         
         //"responsive": {
         //    "details": {
@@ -53,7 +85,7 @@ $(document).ready(function () {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
-                "autoWidth": true,
+                /*"autoWidth": true,*/
                 "orderable": false
             },
             { "data": "nik", "autoWidth": true },
@@ -82,8 +114,15 @@ $(document).ready(function () {
                         class="btn btn-primary"
                         data-toggle="modal"
                         data-target="#exampleModal"
-                        onclick="detail('${row["nik"]}')">Detail</button></td>`;
+                        onclick="detail('${row["nik"]}')">Detail</button></td>
+                        <button type="button"
+                        class="btn btn-danger"
+                        onclick="remove('${row["nik"]}')">Delete</button></td>
+                        `;
                 },
+                //"render": function (data, type, row) {
+                //    return ``;
+                //},
                 "autoWidth": true,
                 "orderable": false
             }
@@ -96,19 +135,20 @@ $(document).ready(function () {
 });
 function detail(nik) {
     $.ajax({
-        url: "https://localhost:44348/API/Persons/GetRegister/"+nik,
+        url: "/Persons/GetById/"+nik,
     }).done((result) => {
         console.log(nik);
+        console.log(result);
         //menampil kan data
         var text = "";
         text = `<ul>
-                    <li class="list-group">: ${result.result.birthDate}</li>
-                    <li class="list-group">: ${result.result.email}</li>
-                    <li class="list-group">: ${result.result.gender}</li>
-                    <li class="list-group">: ${result.result.degree}</li>
-                    <li class="list-group">: ${result.result.gpa}</li>
-                    <li class="list-group">: ${result.result.salary}</li>
-                    <li class="list-group">: ${result.result.universityName}</li>
+                    <li class="list-group">: ${result.birthDate}</li>
+                    <li class="list-group">: ${result.email}</li>
+                    <li class="list-group">: ${result.gender}</li>
+                    <li class="list-group">: ${result.degree}</li>
+                    <li class="list-group">: ${result.gpa}</li>
+                    <li class="list-group">: ${result.salary}</li>
+                    <li class="list-group">: ${result.universityId}</li>
                 </ul>
          `;
         //$("#dataModal").modal('show');
@@ -117,6 +157,44 @@ function detail(nik) {
         console.log(result);
     });
 };
+function  remove(nik){
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            //let val = document.getElementById('nik');
+            //console.log(nik);
+            //val.remove();
+            $.ajax({
+                url: "https://localhost:44348/API/Persons/"+nik,
+                method: 'DELETE',
+                success: function () {
+                    console.log(nik);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    $('#myTable').DataTable().ajax.reload();
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!'
+                    });
+                }
+            })
+        }
+    })
+}
 
 function insert() {
     var obj = {
@@ -135,17 +213,19 @@ function insert() {
     };
     console.log(JSON.stringify(obj));
     $.ajax({
-        url: "https://localhost:44348/API/Persons/Register",
-        method: 'POST',
+        url: "/Persons/PostReg",
+        type: 'POST',
         dataType: 'json',
-        contentType: 'application/json',
+        contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(obj),
         success: function (data) {
-            console.log(data.message);
-            $('#addModal').modal('hide');
-            $('#formRegister').trigger("reset");
+            console.log(data);
             Swal.fire('Registration Success');
-            $('#myTable').DataTable().ajax.reload();
+            /*$('#addModal').modal("hide");*/
+            $('#addModal').hide();
+            $('.modal-backdrop').remove();
+            $('#formatRegister').trigger('reset');
+            $('#myTable').DataTable().ajax.reload();    
         },
         error: function (xhr, status, error) {
             Swal.fire({

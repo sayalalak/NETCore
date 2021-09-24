@@ -61,7 +61,7 @@ namespace NETCore.Base
 
                 return NotFound(new { status = HttpStatusCode.NotFound, message = "Data Kosong" });
             }
-            return Ok(new { status = HttpStatusCode.OK, data, message = "Data Berhasil ditampilkan" });
+            return Ok(data);
         }
         [HttpGet("{key}")]
         public ActionResult Get(Key key)
@@ -72,7 +72,7 @@ namespace NETCore.Base
             {
                 return NotFound(new { status = HttpStatusCode.NotFound, message = "Kamu salah input data gaada" });
             }
-            return Ok(new { status = HttpStatusCode.OK, data, message = "Data ditemukan" });
+            return Ok(data);
         }
         [HttpPut]
         public ActionResult Update(Entity entity)
@@ -99,13 +99,25 @@ namespace NETCore.Base
         [HttpDelete("{key}")]
         public ActionResult Delete(Key key)
         {
-            var data = repository.Delete(key);
-            if (data == 0)
+            if (repository.Get(key) != null)
             {
-                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Data Gagal dihapus" });
+                return Ok(new
+                {
+                    status = HttpStatusCode.OK,
+                    data = repository.Get(key),
+                    deletedata = repository.Delete(key),
+                    message = "Data berhasil Di Hapus"
+                });
             }
-            repository.Delete(key);
-            return Ok(new { status = HttpStatusCode.OK, message = "Data Berhasil dihapus" });
+            else
+            {
+                return NotFound(new
+                {
+                    status = HttpStatusCode.NotFound,
+                    message = "Data dengan NIK tersebut Tidak Ditemukan"
+                });
+            }
+
         }
     }
 }

@@ -13,9 +13,7 @@ namespace NETCore.Models
     {
         public string NIK { get; set; }
         public int RoleId { get; set; }
-        [JsonIgnore]
         public virtual Account Account { get; set; }
-        [JsonIgnore]
         public virtual Role Role { get; set; }
     }
 }

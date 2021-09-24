@@ -17,14 +17,15 @@ namespace NETCore.ViewModel
         public string NIK { get; set; }
         public string NamaLengkap { get; set; }
         [Required]
-        public string FirstName { internal get; set; }
+        public string FirstName { get; set; }
         [Required]
-        public string LastName { internal get; set; }
+        public string LastName { get; set; }
         [Phone]
         [Required]
         public string PhoneNumber { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
+
         [Required]
         [JsonConverter(typeof(StringEnumConverter))]
         public Gender Gender { get; set; }
@@ -34,14 +35,15 @@ namespace NETCore.ViewModel
         public string Email { get; set; }
         [Required]
         [MinLength(5)]
-        public string Password { internal get; set; }
+        public string Password { get; set; }
         [Required]
         public string Degree { get; set; }
         [Required]
         public string GPA { get; set; }
+        public int UniversityId { get; set; }
         public string UniversityName { get; internal set; }
         public ICollection<AccountRole> AccountRoles { get; internal set; }
-        public int UniversityId { get; set; }
+        
         //public int RoleId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ImplementCors.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImplementCors.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -17,10 +19,16 @@ namespace ImplementCors.Controllers
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
-            return View();
+            //jika sudah login
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            //jika belom login
+            return RedirectToAction( "Login", "Login");
         }
 
         public IActionResult Privacy()

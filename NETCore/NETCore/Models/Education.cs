@@ -21,7 +21,6 @@ namespace NETCore.Models
         public string Degree { get; set; }
         public string GPA { get; set; }
         public int UniversityId { get; set; }
-        [JsonIgnore]
         public virtual University University { get; set; }
         [JsonIgnore]
         public virtual ICollection<Profiling> Profilings { get; set; }

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace NETCore.Controllers
 {
-    //uthorize]
+    [EnableCors("AllowAllOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : BaseController<Person, PersonRepository, string>
@@ -24,7 +24,6 @@ namespace NETCore.Controllers
         {
             this.repository = repository;
         }
-        [EnableCors("AllowAllOrigins")]
         [HttpGet("GetRegister")]
         public ActionResult GetRegister()
         {
@@ -40,40 +39,30 @@ namespace NETCore.Controllers
             }
             else
             {
-                return Ok(new
-                {
-                    status = HttpStatusCode.OK,
-                    result = getRegister,
-                    message = "Success"
-                });
+                return Ok(getRegister);
             }
                 
         }
-        [EnableCors("AllowAllOrigins")]
+        
         [HttpGet("GetRegister/{NIK}")]
         public ActionResult GetRegister(string NIK)
         {
             var getRegister = repository.GetRegister(NIK);
             if (getRegister == null)
             {
-                return NotFound(new
-                {
-                    status = HttpStatusCode.NoContent,
-                    result = getRegister,
-                    message = "Data Tidak Ada"
-                });
+                //return NotFound(new
+                //{
+                //    status = HttpStatusCode.NoContent,
+                //    result = getRegister,
+                //    message = "Data Tidak Ada"
+                //});
+                return NotFound(getRegister);
             }
             else
             {
-                return Ok(new
-                {
-                    status = HttpStatusCode.OK,
-                    result = getRegister,
-                    message = "Success"
-                });
+                return Ok(getRegister);
             }
         }
-        [EnableCors("AllowAllOrigins")]
         [HttpPost("Register")]
         public ActionResult InsertReg(RegisterVM register)
         {
@@ -91,9 +80,10 @@ namespace NETCore.Controllers
 
                 if (repository.InsertReg(register) > 0)
                 {
-                    return Ok(new { 
-                        status = HttpStatusCode.OK, 
-                        message = "Data Berhasil ditambahkan" });
+                    //return Ok(new { 
+                    //    status = HttpStatusCode.OK, 
+                    //    message = "Data Berhasil ditambahkan" });
+                    return Ok();
                 }
                 else if (repository.InsertReg(register) == 0)
                 {
@@ -116,6 +106,5 @@ namespace NETCore.Controllers
             }
 
         }
-       
     }
 }

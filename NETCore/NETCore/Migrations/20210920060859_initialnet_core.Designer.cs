@@ -10,8 +10,8 @@ using NETCore.Context;
 namespace NETCore.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210907015659_updatetable")]
-    partial class updatetable
+    [Migration("20210920060859_initialnet_core")]
+    partial class initialnet_core
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
